@@ -1,8 +1,9 @@
 import Icon from "react-native-vector-icons/Ionicons";
 import { View, Text, TextInput, Image, Pressable } from "react-native";
 import React from "react";
+import { Alert } from "react-native";
 
-const LoginPage = () => {
+const LoginPage = ({ navigation }) => {
   return (
     <View className="flex-1 justify-evenly items-center">
       {/* Logo */}
@@ -29,7 +30,18 @@ const LoginPage = () => {
         </View>
 
         <View className="w-[67%] relative ">
-          <Pressable className="group absolute w-[50%] right-0 border-2 border-solid border-sky-700 items-center py-1 bg-sky-700  active:bg-sky-900 active:transition-colors active:duration-1000">
+          <Pressable
+            className="group absolute w-[50%] right-0 border-2 border-solid border-sky-700 items-center py-1 bg-sky-700  active:bg-sky-900 active:transition-colors active:duration-1000"
+            onPress={() => {
+              Alert.alert(
+                "SOCIALMASS",
+                "Giriş Başarılı Anasayfaya Yönlendiriliyorsunuz"
+              );
+              setTimeout(() => {
+                navigation.navigate("HomePage");
+              }, 750);
+            }}
+          >
             <Text className="text-base text-white ">LOGIN</Text>
           </Pressable>
         </View>
