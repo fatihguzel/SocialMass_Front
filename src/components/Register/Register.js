@@ -4,15 +4,20 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 const RegisterPage = ({ navigation }) => {
   return (
-    <View className="flex-1 justify-evenly items-center">
+    <View className="flex-1 justify-center items-center ">
+      <Image
+        resizeMode="cover"
+        className="absolute w-full opacity-5 h-full"
+        source={require("../../assets/social.png")}
+      />
       {/* Logo */}
       <View>
-        <Text className="top-12 text-4xl tracking-widest font-light text-sky-700">
+        <Text className="bottom-16 text-4xl tracking-widest font-light text-sky-700">
           SOCIALMASS
         </Text>
       </View>
       {/* Inputs */}
-      <View className="flex flex-col gap-y-8 w-full items-center">
+      <View className="relative z-10 flex flex-col gap-y-8 w-full items-center">
         <View className="w-[60%] flex flex-row justify-center items-center gap-x-2">
           <Icon name="arrow-forward" type="ionicon" color="#517fa4" size={20} />
           <TextInput

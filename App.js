@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-import { StatusBar } from "react-native";
+import { Alert, Button, StatusBar, View } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -11,31 +11,22 @@ import ProfilePage from "./src/components/Profile/Profile";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import FriendsPage from "./src/components/Friends/Friends";
 
-export default function App() {
+export default function App({ navigation }) {
   const Tab = createMaterialBottomTabNavigator();
   const Stack = createNativeStackNavigator();
 
-  const x = 2;
+  const x = 1;
   return (
     <NavigationContainer>
       {/* USER NOT LOGINED */}
       {x == 1 ? (
         <Stack.Navigator
           initialRouteName="LoginPage"
-          inactiveColor="gray"
           screenOptions={{
             title: "",
-            cardStyle: {
-              backgroundColor: "#dce5df",
+            contentStyle: {
+              backgroundColor: "#f1edf5",
             },
-            headerTitleStyle: {
-              color: "#dce5df",
-              alignItems: "center",
-              textAlign: "center",
-            },
-          }}
-          barStyle={{
-            backgroundColor: "white",
           }}
         >
           <Stack.Group>
@@ -43,21 +34,20 @@ export default function App() {
               name="LoginPage"
               component={LoginPage}
               options={{
-                tabBarLabel: "Login",
-                tabBarIcon: ({ color }) => (
-                  <Icon2 name="login" color={color} size={26} />
-                ),
+                headerStyle: {
+                  backgroundColor: "#f1edf5",
+                },
+                headerShadowVisible: false,
               }}
             />
             <Stack.Screen
               name="RegisterPage"
               component={RegisterPage}
               options={{
-                tabBarLabel: "Register",
-                tabBarColor: "red",
-                tabBarIcon: ({ color }) => (
-                  <Icon name="registered" color={color} size={25} />
-                ),
+                headerStyle: {
+                  backgroundColor: "#f1edf5",
+                },
+                headerShadowVisible: false,
               }}
             />
           </Stack.Group>
@@ -67,11 +57,10 @@ export default function App() {
               name="HomePage"
               component={Home}
               options={{
-                tabBarLabel: "Home",
-                tabBarColor: "red",
-                tabBarIcon: ({ color }) => (
-                  <Icon name="home" color={color} size={25} />
-                ),
+                headerStyle: {
+                  backgroundColor: "#f1edf5",
+                },
+                headerShadowVisible: false,
               }}
             />
 
@@ -79,19 +68,25 @@ export default function App() {
               name="Logout"
               component={LoginPage}
               options={{
-                tabBarLabel: "Logout",
-                tabBarColor: "red",
-
-                tabBarIcon: ({ color }) => (
-                  <Icon2 name="logout" color={color} size={25} />
-                ),
+                headerStyle: {
+                  backgroundColor: "#f1edf5",
+                },
+                headerShadowVisible: false,
               }}
             />
           </Stack.Group>
         </Stack.Navigator>
       ) : (
         // USER LOGINED
-        <Tab.Navigator initialRouteName="Home">
+        <Tab.Navigator
+          initialRouteName="Home"
+          screenOptions={{
+            title: "",
+            contentStyle: {
+              backgroundColor: "#f1edf5",
+            },
+          }}
+        >
           <Tab.Screen
             name="Home"
             options={{
@@ -102,10 +97,52 @@ export default function App() {
             }}
           >
             {() => (
-              <Stack.Navigator initialRouteName="HomePage">
-                <Stack.Screen name="HomePage" component={Home} />
-                <Stack.Screen name="ProfilePage" component={ProfilePage} />
-                <Stack.Screen name="FriendsPage" component={FriendsPage} />
+              <Stack.Navigator
+                initialRouteName="HomePage"
+                screenOptions={{
+                  title: "",
+                  contentStyle: {
+                    backgroundColor: "#f1edf5",
+                    headerStyle: {
+                      backgroundColor: "#f1edf5",
+                    },
+                    headerShadowVisible: false,
+                  },
+                }}
+              >
+                <Stack.Screen
+                  name="HomePage"
+                  component={Home}
+                  options={{
+                    title: "",
+                    headerStyle: {
+                      backgroundColor: "#f1edf5",
+                    },
+                    headerShadowVisible: false,
+                  }}
+                />
+                <Stack.Screen
+                  name="ProfilePage"
+                  component={ProfilePage}
+                  options={{
+                    title: "",
+                    headerStyle: {
+                      backgroundColor: "#f1edf5",
+                    },
+                    headerShadowVisible: false,
+                  }}
+                />
+                <Stack.Screen
+                  name="FriendsPage"
+                  component={FriendsPage}
+                  options={{
+                    title: "",
+                    headerStyle: {
+                      backgroundColor: "#f1edf5",
+                    },
+                    headerShadowVisible: false,
+                  }}
+                />
               </Stack.Navigator>
             )}
           </Tab.Screen>
@@ -119,9 +156,37 @@ export default function App() {
             }}
           >
             {() => (
-              <Stack.Navigator initialRouteName="ProfilePage">
-                <Stack.Screen name="ProfilePage" component={ProfilePage} />
-                <Stack.Screen name="FriendsPage" component={FriendsPage} />
+              <Stack.Navigator
+                initialRouteName="ProfilePage"
+                screenOptions={{
+                  title: "",
+                  contentStyle: {
+                    backgroundColor: "#f1edf5",
+                  },
+                }}
+              >
+                <Stack.Screen
+                  name="ProfilePage"
+                  component={ProfilePage}
+                  options={{
+                    title: "",
+                    headerStyle: {
+                      backgroundColor: "#f1edf5",
+                    },
+                    headerShadowVisible: false,
+                  }}
+                />
+                <Stack.Screen
+                  name="FriendsPage"
+                  component={FriendsPage}
+                  options={{
+                    title: "",
+                    headerStyle: {
+                      backgroundColor: "#f1edf5",
+                    },
+                    headerShadowVisible: false,
+                  }}
+                />
               </Stack.Navigator>
             )}
           </Tab.Screen>
