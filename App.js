@@ -4,18 +4,20 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { NavigationContainer } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon2 from "react-native-vector-icons/MaterialCommunityIcons";
+import IconIcons from "react-native-vector-icons/Ionicons";
 import LoginPage from "./src/components/Login/Login";
 import RegisterPage from "./src/components/Register/Register";
 import Home from "./src/components/Home/Home";
 import ProfilePage from "./src/components/Profile/Profile";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import FriendsPage from "./src/components/Friends/Friends";
+import MessagesPage from "./src/components/Message/Message";
 
 export default function App({ navigation }) {
   const Tab = createMaterialBottomTabNavigator();
   const Stack = createNativeStackNavigator();
 
-  const x = 1;
+  const x = 2;
   return (
     <NavigationContainer>
       {/* USER NOT LOGINED */}
@@ -191,6 +193,40 @@ export default function App({ navigation }) {
             )}
           </Tab.Screen>
 
+          <Tab.Screen
+            name="ChatPage"
+            options={{
+              tabBarLabel: "Message",
+              tabBarColor: "red",
+              tabBarIcon: ({ color }) => (
+                <IconIcons name="md-chatbox" color={color} size={25} />
+              ),
+            }}
+          >
+            {() => (
+              <Stack.Navigator
+                initialRouteName="Messages"
+                screenOptions={{
+                  title: "",
+                  contentStyle: {
+                    backgroundColor: "#f1edf5",
+                  },
+                }}
+              >
+                <Stack.Screen
+                  name="MessagesPage"
+                  component={MessagesPage}
+                  options={{
+                    title: "",
+                    headerStyle: {
+                      backgroundColor: "#f1edf5",
+                    },
+                    headerShadowVisible: false,
+                  }}
+                />
+              </Stack.Navigator>
+            )}
+          </Tab.Screen>
           <Tab.Screen
             name="Logout"
             component={LoginPage}
